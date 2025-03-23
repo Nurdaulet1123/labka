@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         val adapter = ItemAdapter(items) { item ->
-            Toast.makeText(this, "Выбран: ${item.title}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Выбран: ${item.title} , ${item.description}", Toast.LENGTH_SHORT).show()
         }
 
         recyclerView.layoutManager = LinearLayoutManager(this)
