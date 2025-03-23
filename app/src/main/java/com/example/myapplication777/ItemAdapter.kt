@@ -1,14 +1,20 @@
 package com.example.myapplication777
-
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ItemAdapter(private var items: List<ItemModel>) : RecyclerView.Adapter<ItemViewHolder>() {
+class ItemAdapter(
+    private val items: List<ItemModel>,
+    private val onItemClick: (ItemModel) -> Unit
+) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
-    fun updateData(newItems: List<ItemModel>) {
-        items = newItems
-        notifyDataSetChanged()
+    class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val title: TextView = view.findViewById(R.id.item_title)
+        val description: TextView = view.findViewById(R.id.item_description)
+        val flag: ImageView = view.findViewById(R.id.item_flag)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -21,6 +27,11 @@ class ItemAdapter(private var items: List<ItemModel>) : RecyclerView.Adapter<Ite
         val item = items[position]
         holder.title.text = item.title
         holder.description.text = item.description
+        holder.flag.setImageResource(item.flagResId)
+
+        holder.itemView.setOnClickListener {
+            onItemClick(item)
+        }
     }
 
     override fun getItemCount() = items.size

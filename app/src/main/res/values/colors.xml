@@ -2,4 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="item_background">#F5F5F5</color> <!-- Светло-серый фон -->
+    <color name="title_color">#1E88E5</color> <!-- Синий заголовок -->
+    <color name="description_color">#757575</color> <!-- Серый текст -->
 </resources>
