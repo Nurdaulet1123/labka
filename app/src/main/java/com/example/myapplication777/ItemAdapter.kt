@@ -4,7 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class ItemAdapter(private val items: List<ItemModel>) : RecyclerView.Adapter<ItemViewHolder>() {
+class ItemAdapter(private var items: List<ItemModel>) : RecyclerView.Adapter<ItemViewHolder>() {
+
+    fun updateData(newItems: List<ItemModel>) {
+        items = newItems
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val view = LayoutInflater.from(parent.context)
